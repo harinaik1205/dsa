@@ -5,16 +5,13 @@
 //[3,1,4,2,1,4] --> output: 1
 
 function firstDuplicateNumber(arr) {
-  const obj = {};
-  if (!arr || arr.length == 1) return null;
+  const seen = new Set();
 
   for (let num of arr) {
-    if (obj[num] && obj[num] >= 1) {
-      obj[num] += 1;
+    if (seen.has(num)) {
       return num;
-    } else {
-      obj[num] = 1;
     }
+    seen.add(num);
   }
 
   return null;
